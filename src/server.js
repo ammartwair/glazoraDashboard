@@ -34,7 +34,7 @@ const allowedOrigins = [
   'http://localhost:5500',
   'http://127.0.0.1:5500',
   // Add your production domain here
-  'https://glazora.netlify.app',
+  'https://glazoradashboard.netlify.app',
   'https://glazora.ae',
   'https://www.glazora.ae'
 ].filter(Boolean);
