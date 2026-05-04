@@ -86,15 +86,11 @@ router.post("/send-otp", otpLimiter, async (req, res) => {
     // Send email
     if (contactType === "email") {
       setImmediate(() => {
-        await Promise.race([
-          sendOTPEmail({ to: contact, otp, lang }).catch((err) =>
+        sendOTPEmail({ to: contact, otp, lang }).catch((err) =>
           console.error("EMAIL ERROR:", err.message),
-        ),
-        new Promise((_, reject) =>
-          setTimeout(() => reject(new Error('SMTP_TIMEOUT')), 8000))
-      ]);
-    });
-  }
+        );
+      });
+    }
     // For phone: integrate SMS provider here (Twilio / Unifonic)
 
     // In development, return OTP in response for testing
